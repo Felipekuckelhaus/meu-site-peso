@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Seu Peso em Outros Planetas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0d1117;
+      color: white;
+      text-align: center;
+      padding: 50px;
+    }
+    select, input, button {
+      margin: 10px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #1f6feb;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Seu Peso em Outros Planetas 🪐</h1>
+  <p>Digite seu peso na Terra:</p>
+  <input type="number" id="peso" placeholder="Ex: 70">
+  
+  <p>Escolha um planeta:</p>
+  <select id="planeta">
+    <option value="3.7">Mercúrio</option>
+    <option value="8.87">Vênus</option>
+    <option value="3.71">Marte</option>
+    <option value="24.79">Júpiter</option>
+    <option value="10.44">Saturno</option>
+    <option value="8.69">Urano</option>
+    <option value="11.15">Netuno</option>
+  </select>
+  
+  <br>
+  <button onclick="calcular()">Calcular Peso</button>
+  <h2 id="resultado"></h2>
+
+  <script>
+    function calcular() {
+      const peso = parseFloat(document.getElementById('peso').value);
+      const gravidade = parseFloat(document.getElementById('planeta').value);
+      const gravidadeTerra = 9.807;
+
+      if (!peso || peso <= 0) {
+        document.getElementById('resultado').innerText = "Digite um peso válido.";
+        return;
+      }
+
+      const pesoFinal = (peso * gravidade / gravidadeTerra).toFixed(2);
+      document.getElementById('resultado').innerText = `Seu peso no planeta escolhido seria ${pesoFinal} kg`;
+    }
+  </script>
+</body>
+</html>
